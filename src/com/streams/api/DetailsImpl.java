@@ -2,6 +2,7 @@ package com.streams.api;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -18,7 +19,7 @@ public class DetailsImpl {
 
         lists.add(new Details(parts));
 
-       lists.stream().flatMap(e->e.getParts().stream()).forEach(System.out::println);
+       lists.stream().flatMap(e-> e.getParts().stream()).forEach(System.out::println);
 
     }
 }
