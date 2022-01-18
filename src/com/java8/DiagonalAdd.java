@@ -13,7 +13,7 @@ import static java.util.stream.Collectors.toList;
 public class DiagonalAdd {
 
     public static void main(String[] args) {
-        List<List<Integer>> lists = new ArrayList<>();
+        List<L  ist<Integer>> lists = new ArrayList<>();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 

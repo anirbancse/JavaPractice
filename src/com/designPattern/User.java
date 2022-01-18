@@ -104,7 +104,7 @@ public class User {
 
         System.out.println(user2);*/
 
-        User user3 =  User.builder().firstName("Super").lastName("Man")
+        User user3 =  User.builder().lastName("Super").firstName("Man")
                 //No age
                 //No phone
                 //no address
