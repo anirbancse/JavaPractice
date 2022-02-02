@@ -27,7 +27,7 @@ public final class Employee {
     }
 
     public List<String> getMobile() {
-        return new ArrayList<>(mobile);
+        return new ArrayList<>();
     }
 
     public Address getAddress() {
@@ -47,7 +47,7 @@ public final class Employee {
     public static void main(String[] args) {
         Address address=new Address("blr","1012");
         Employee employee=new Employee("Basant",new Date(),
-                Arrays.stream(new String[]{"1234","5678"}).collect(Collectors.toList()), address);
+                Arrays.asList(new String[]{"1234","5678"}), address);
 
         employee.getDoj().setDate(20);
         employee.getMobile().add("9010");
