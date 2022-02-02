@@ -4,9 +4,14 @@ package com.java8;
 public interface FunctionalInter {
     public void show(String a,String b,int x,int y);
 
-    public static String customMsg(String msg){
-        return msg;
+    private static String privateShow(String msg){
+        return "Aadsad";
     }
+    public static String customMsg(String msg){
+        return privateShow(msg);
+    }
+
+
 
     public default Integer numberDisplay(){
         return 2;

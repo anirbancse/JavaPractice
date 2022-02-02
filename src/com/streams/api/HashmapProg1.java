@@ -40,7 +40,10 @@ public class HashmapProg1 {
         list.add("");
         list.add("");
 
-        list.stream().filter(s->s.startsWith("O")).map(e->e.toUpperCase()).forEach(System.out::println);
+        list.stream()
+                .filter(s->s.startsWith("O"))
+                .map(e->e.toUpperCase())
+                .forEach(System.out::println);
 
     }
 }

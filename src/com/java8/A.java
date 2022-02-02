@@ -23,5 +23,13 @@ public class A implements  Comparable<A>{
         public String getName() {
             return name;
         }
+
+    @Override
+    public String toString() {
+        return "A{" +
+                "year=" + year +
+                ", name='" + name + '\'' +
+                '}';
     }
+}
 

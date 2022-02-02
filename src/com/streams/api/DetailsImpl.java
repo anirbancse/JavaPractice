@@ -17,9 +17,17 @@ public class DetailsImpl {
         parts.add("V");
         parts.add("C");
 
-        lists.add(new Details(parts));
+        List<String> names = new ArrayList<>();
+        names.add("Jack");
+        names.add("John");
 
-       lists.stream().flatMap(e-> e.getParts().stream()).forEach(System.out::println);
+        lists.add(new Details(names));
+        lists.add(new Details(parts));
+        System.out.println(lists);
+
+       lists.stream().flatMap(e-> e.getParts().stream())
+               .map(s->s.length())
+               .forEach(System.out::println);
 
     }
 }

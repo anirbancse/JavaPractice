@@ -14,11 +14,13 @@ public class HashmapClass {
         map.put("c",1);
 
 
-        /*Map sortByValue1 =  map.entrySet().stream().sorted((o1, o2) -> o1.getValue().compareTo(o2.getValue()));*/
+         Map sortByValue1 =  map.entrySet().stream().sorted((o1, o2) -> o1.getValue().compareTo(o2.getValue()))
+                 .collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
 
         Map sortByValue = map.entrySet() .stream() .sorted(Map.Entry.<String, Integer>comparingByValue()) .
             collect(Collectors.toMap(e -> e.getKey(),e -> e.getValue()));
 
         System.out.println(sortByValue+ " "+ map);
+        System.out.println(sortByValue1);
     }
 }

@@ -21,6 +21,15 @@ class Course implements Cloneable
     {
         return super.clone();
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "subject1='" + subject1 + '\'' +
+                ", subject2='" + subject2 + '\'' +
+                ", subject3='" + subject3 + '\'' +
+                '}';
+    }
 }
 
 class Student implements Cloneable
@@ -50,6 +59,11 @@ class Student implements Cloneable
 
         return student;
     }
+
+    @Override
+    public String toString() {
+        return "id---"+id+"course---"+course.toString();
+    }
 }
 
 public class DeepCopy
@@ -67,6 +81,7 @@ public class DeepCopy
             //Creating a clone of student1 and assigning it to student2
 
             student2 = (Student) student1.clone();
+            //System.out.println(student1.toString()+"---"+student2.toString());
         }
         catch (CloneNotSupportedException e)
         {
@@ -75,11 +90,12 @@ public class DeepCopy
 
         //Printing the subject3 of 'student1'
 
-        System.out.println(student1.course.subject3);         //Output : Biology
+        //System.out.println(student1.course.subject3);         //Output : Biology
 
         //Changing the subject3 of 'student2'
 
-        student2.course.subject3 = "Maths";
+        student1.course.subject3 = "Maths";
+        System.out.println(student1.toString());
 
         //This change will not be reflected in original student 'student1'
 

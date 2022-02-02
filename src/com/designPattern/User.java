@@ -1,15 +1,16 @@
 package com.designPattern;
 
-import javafx.util.Builder;
+
+import java.util.Optional;
 
 public class User {
 
         //All final attributes
         private final String firstName; // required
         private final String lastName; // required
-        private final int age; // optional
-        private final String phone; // optional
-        private final String address; // optional
+        private final int age; // pl.piomin.java.samples.optional
+        private final String phone; // pl.piomin.java.samples.optional
+        private final String address; // pl.piomin.java.samples.optional
 
         private User(UserBuilder builder) {
             this.firstName = builder.firstName;
@@ -88,6 +89,8 @@ public class User {
         }
 
     public static void main(String[] args) {
+
+
         User user1 =  User.builder().firstName("Lokesh").lastName("Gupta")
                 .age(30)
                 .phone("1234567")

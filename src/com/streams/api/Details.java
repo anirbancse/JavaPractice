@@ -10,6 +10,14 @@ public class Details {
         this.parts = parts;
     }
 
+
+    @Override
+    public String toString() {
+        return "Details{" +
+                "parts=" + parts +
+                '}';
+    }
+
     public List<String> getParts() {
         return parts;
     }

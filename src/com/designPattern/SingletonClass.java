@@ -4,7 +4,6 @@ public class SingletonClass {
 
     private static SingletonClass singleton = null;
 
-
     String s;
 
     public String getMsg(){

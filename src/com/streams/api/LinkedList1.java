@@ -1,4 +1,5 @@
 package com.streams.api;
+
 import java.io.*;
 import java.util.*;
 
@@ -15,7 +16,8 @@ class Node {
 class LinkedList1 {
 
     public static Node insert(Node head, int data) {
-        //Complete this method
+
+        // Complete this method
 
         // if list has no elements, return a new node
         if (head == null) {
@@ -31,7 +33,6 @@ class LinkedList1 {
 
         return head;
     }
-
 
     public static void display(Node head) {
         Node start = head;

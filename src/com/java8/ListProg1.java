@@ -5,23 +5,26 @@ import java.util.List;
 
 public class ListProg1 {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        List<String> names = new ArrayList<>();
+    List<String> names = new ArrayList<>();
 
-        names.add("A");
-        names.add("B");
-        names.add("C");
+    names.add("A");
 
-        System.out.println("Before Set method::: "+names);
+    names.add("B");
+    names.add("C");
 
-        names.add(1,"k");
-        System.out.println(names);
+    System.out.println("Before Set method::: " + names);
 
-        names.set(0,"P");
-        System.out.println(names);
+    names.add(1, "k");
+    System.out.println(names);
 
-      /*  names.add(0,"H"); //replac
-        System.out.println(names);*/
-    }
+    names.set(0, "P");
+    System.out.println(names);
+
+    /*
+     * names.add(0,"H"); //replac
+     * System.out.println(names);
+     */
+  }
 }
