@@ -1,6 +1,6 @@
 package com.java8;
 
-class Dept implements Cloneable{
+class Dept implements Cloneable {
 
     public String dept_name;
     public int dept_id;
@@ -24,14 +24,14 @@ class Dept implements Cloneable{
     }
 }
 
-class Student1 implements Cloneable{
+class Student1 implements Cloneable {
 
-     int id;
-     String name;
-     Dept dept;
+    int id;
+    String name;
+    Dept dept;
 
 
-    public Student1(int id, String name,Dept dept) {
+    public Student1(int id, String name, Dept dept) {
         this.id = id;
         this.name = name;
         this.dept = dept;
@@ -39,7 +39,7 @@ class Student1 implements Cloneable{
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        Student1 stu =  (Student1) super.clone();
+        Student1 stu = (Student1) super.clone();
         stu.dept = (Dept) dept.clone();
         return stu;
     }
@@ -49,7 +49,7 @@ class Student1 implements Cloneable{
         return "Student1{" +
                 "id=" + id +
                 ", name=" + name +
-                ", dept="+dept+
+                ", dept=" + dept +
                 '}';
     }
 }
@@ -57,19 +57,19 @@ class Student1 implements Cloneable{
 public class ShallowCopy {
 
     public static void main(String[] args) {
-        Dept dept = new Dept("Civil",1011);
-        Student1 student1 = new Student1(1,"John",dept);
+        Dept dept = new Dept("Civil", 1011);
+        Student1 student1 = new Student1(1, "John", dept);
         Student1 student2 = null;
 
         try {
             student2 = (Student1) student1.clone(); //shallowcopt means both the objects will refer to the same memory ref
-        }catch (CloneNotSupportedException e){
+        } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
 
 
         student2.dept.dept_name = "CSE";
-        System.out.println(student1+"--------"+student2);
+        System.out.println(student1 + "--------" + student2);
 
 
     }
