@@ -43,7 +43,7 @@ class Alien implements Cloneable{
     }
 }
 
-final public class ImmutableCustom implements Cloneable {
+final public class ImmutableCustom  {
 
     private final String name;
     private final int id;
@@ -79,8 +79,9 @@ final public class ImmutableCustom implements Cloneable {
     }
 
     public List<String> getList() {
-        return new ArrayList<>();
+        return new ArrayList<>(list);
     }
+
 
     @Override
     public String toString() {
@@ -98,11 +99,13 @@ final public class ImmutableCustom implements Cloneable {
     public static void main(String[] args) throws CloneNotSupportedException {
         Alien alien = new Alien("Dev","Pune");
         ImmutableCustom immutableCustom = new ImmutableCustom("Ani",2,List.of("A","B","C"),alien);
+
+
         //System.out.println(immutableCustom.toString());
 
         immutableCustom.getList().add("D");
         immutableCustom.getAlien().setLoc("Kolkata");
-        System.out.println(immutableCustom);
+        System.out.println(immutableCustom.getAlien().hashCode()+"  "+immutableCustom.getAlien().hashCode());
 
     }
 }

@@ -56,7 +56,7 @@ public class ComparatorClass {
                 integerList.stream()
                                 .map(s -> s * 2)
                                 .filter(predicate)
-                                .forEach(e -> System.out.println(e));
+                                .forEach(e -> System.out.println(e+"***"));
 
         }
 }

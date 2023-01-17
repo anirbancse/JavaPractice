@@ -30,6 +30,20 @@ public class EmployeeHashMap {
         this.name = name;
     }
 
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        EmployeeHashMap that = (EmployeeHashMap) o;
+//        return id == that.id && Objects.equals(name, that.name) && Objects.equals(address, that.address);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, name, address);
+//    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,7 +54,7 @@ public class EmployeeHashMap {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, name, address);
     }
 
     @Override

@@ -62,14 +62,15 @@ public class ShallowCopy {
         Student1 student2 = null;
 
         try {
-            student2 = (Student1) student1.clone(); //shallowcopt means both the objects will refer to the same memory ref
+            student2 = (Student1) student1.clone(); //shallowcopy means both the objects will refer to the same memory ref
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
+        student2 = student1;
 
 
         student2.dept.dept_name = "CSE";
-        System.out.println(student1 + "--------" + student2);
+        System.out.println(student1.hashCode() + "--------" + student2.hashCode());
 
 
     }

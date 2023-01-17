@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Java8.iml" filepath="$PROJECT_DIR$/Java8.iml" />
+      <module fileurl="file://D:/Study/Java Projects/interview-qa/interview-qa.iml" filepath="D:/Study/Java Projects/interview-qa/interview-qa.iml" />
+      <module fileurl="file://D:/Study/Java Projects/sample-java-new-features/sample-java-new-features.iml" filepath="D:/Study/Java Projects/sample-java-new-features/sample-java-new-features.iml" />
     </modules>
   </component>
 </project>

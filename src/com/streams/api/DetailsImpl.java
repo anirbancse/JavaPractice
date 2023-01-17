@@ -10,7 +10,7 @@ public class DetailsImpl {
 
     public static void main(String[] args) {
 
-        List<Details> lists = new ArrayList<>();
+        List<List<String>> lists = new ArrayList<>();
 
         List<String> parts = new ArrayList<>();
         parts.add("A");
@@ -21,12 +21,12 @@ public class DetailsImpl {
         names.add("Jack");
         names.add("John");
 
-        lists.add(new Details(names));
-        lists.add(new Details(parts));
-        System.out.println(lists);
+        lists.add(parts);
+        lists.add(names);
+        //System.out.println(lists);
 
-       lists.stream().flatMap(e-> e.getParts().stream())
-               .map(s->s.length())
+       lists.parallelStream().flatMap(Collection::stream)
+               .map(e->e.length())
                .forEach(System.out::println);
 
     }

@@ -8,9 +8,9 @@ public class ListProg {
         List <Integer> lists =  Arrays.asList(1,88,45,67,90);
 
         //Collections.sort(lists,Collections.reverseOrder());
-        lists.forEach(System.out::println);
+        //lists.forEach(System.out::println);
 
-        int max = lists.stream().min((o1, o2) -> o1.compareTo(o2)).orElseThrow(NoSuchElementException::new);
+        int max = lists.stream().max((o1, o2) -> o1.compareTo(o2)).orElseThrow(NoSuchElementException::new);
         System.out.println(max);
     }
 }
