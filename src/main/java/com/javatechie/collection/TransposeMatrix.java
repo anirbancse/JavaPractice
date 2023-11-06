@@ -1,14 +1,11 @@
 package com.javatechie.collection;
 
-
 public class TransposeMatrix {
     public static void main(String[] args) {
-        int[][] matrix = {{1, 1, 1, 1}, {2, 2, 2, 2}, {3, 3, 3, 3}, {4, 4, 4, 4}};
+        int[][] matrix = { { 1, 1, 1, 1 }, { 2, 2, 2, 2 }, { 3, 3, 3, 3 }, { 4, 4, 4, 4 } };
 
         int rows = matrix.length;
         int columns = matrix[0].length;
-
-        int[][] transposedMatrix = new int[columns][rows];
 
         for (int i = 0; i < rows; i++) {
             for (int j = i + 1; j < columns; j++) {
