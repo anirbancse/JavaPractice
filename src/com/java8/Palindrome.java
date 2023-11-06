@@ -19,7 +19,7 @@ public class Palindrome {
 
     public static void main(String[] args) {
         // write your code here
-        Palindrome.palindrom("121");
+        Palindrome.palindrom("epajfxzfnvte");
 
 
         //Stream of numbers --> [Highest 5 nos]

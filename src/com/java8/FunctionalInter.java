@@ -2,10 +2,10 @@ package com.java8;
 
 @FunctionalInterface
 public interface FunctionalInter {
-    public void show(String a,String b,int x,int y);
+    public String show(String a,String b,int x,int y);
 
     private static String privateShow(String msg){
-        return "Aadsad";
+        return msg;
     }
     public static String customMsg(String msg){
         return privateShow(msg);

@@ -7,19 +7,22 @@ public class FunctionalInterImpl implements FunctionalInter {
         return "Java 8 ";
     }*/
 
-    @Override
-    public void show(String a, String b, int x, int y) {
-
-    }
-
     public static void main(String[] args) {
-        FunctionalInter functionalInter = (a,b,x,y)->{
-            System.out.println(a+b+x+y);
+        FunctionalInter functionalInter = (a, b, x, y) -> {
+            //System.out.println(a + b + x + y);
+            return a + b + x + y;
         };
 
         FunctionalInterImpl functionalInter1 = new FunctionalInterImpl();
-        System.out.println(functionalInter1.showMsg());
+        System.out.println(functionalInter.showMsg());
+        System.out.println(FunctionalInter.customMsg("Anirban"));
 
-        functionalInter.show("AA","BB",5,6);
+        var ans = functionalInter.show("AA", "BB", 5, 6);
+        System.out.println(ans);
+    }
+
+    @Override
+    public String show(String a, String b, int x, int y) {
+        return "";
     }
 }

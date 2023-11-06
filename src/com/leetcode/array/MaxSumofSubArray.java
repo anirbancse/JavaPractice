@@ -18,7 +18,7 @@ class MaxSumofSubArray {
 
         for (int i = 0; i < size; i++) {
             max_ending_here = max_ending_here + a[i];
-            System.out.println(max_ending_here);
+          //  System.out.println(max_ending_here);
             if (max_so_far < max_ending_here)
                 max_so_far = max_ending_here;
             if (max_ending_here < 0)

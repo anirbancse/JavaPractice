@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "StreamsTest",
+            "request": "launch",
+            "mainClass": "com.StreamsTest",
+            "projectName": "untitled_f14b2d43"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

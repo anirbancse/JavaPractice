@@ -17,8 +17,8 @@ class AnaSolution {
         Arrays.sort(carr1);
         Arrays.sort(carr2);
 
-        String str1 = new String(carr1);
-        String str2 = new String(carr2);
+        String str1 = String.valueOf(carr1);
+        String str2 = String.valueOf(carr2);
 
         if (str1.equals(str2)) {
             return true;
