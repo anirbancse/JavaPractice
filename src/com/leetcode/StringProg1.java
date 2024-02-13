@@ -18,10 +18,9 @@ class WordDictionary {
         return words.contains(word);
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "}";
+
+    public List<String> display() {
+        return words;
     }
 
 }
@@ -33,7 +32,7 @@ public class StringProg1 {
         wordDictionary.addWord("..ab");
         wordDictionary.addWord("b...");
 
-        System.out.println(wordDictionary);
+        System.out.println(wordDictionary.display());
 
         System.out.println(wordDictionary.search("..ab"));
 

@@ -54,10 +54,7 @@ public class StreamsTest {
         List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 4, 4);
         Set<Integer> duplicated = numbers
                 .stream()
-                .filter(n -> numbers
-                        .stream()
-                        .filter(k -> k == n)
-                        .count() > 1)
+                .filter(n -> Collections.frequency(numbers , n)>1)
                 .collect(Collectors.toSet());
         System.out.println(duplicated);
 
