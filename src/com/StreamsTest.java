@@ -19,8 +19,10 @@ public class StreamsTest {
         employees.add(new Employee("FFF", 666, "D2", 6000));
 
         System.out.println(employees);
+
         // TODO print employee names belongs to dept "D2" - using streams functions
-        var x = employees.stream().filter(d -> d.getDeptno() != null && d.getDeptno().equals("D2")).toList();
+        //var x = employees.stream().filter(d -> d.getDeptno() != null && d.getDeptno().equals("D2")).toList();
+        var x = employees.stream().filter(dept -> dept.getDeptno() != null && dept.getDeptno().equals("D2")).toList();
         System.out.println(x);
 
         // TODO Print the sum of all employees salaries using streams - expected to
@@ -31,30 +33,42 @@ public class StreamsTest {
         // TODO Given a sentence find the word that has the highest length using
         // Streams. expected to print "Welcome"
         String input = " Welcome to Java world";
+        var h = Arrays.stream(input.split(" ")).max(Comparator.comparingInt(String::length)).orElse("");
+        System.out.println(h);
 
         // TODO Should print most repeated number from the array, using streams or Java
         // 7 features...
         // number 5 repeated most of the (3)times, Should print 5 and not 3
-        int arr[] = { 7, 5, 7, 5, 7, 5, 5 };
-
-        int mostRepeated = Arrays.stream(arr)
-                // Step 2: Count the occurrences of each element
+        int arr[] = {7, 5, 7, 5, 7, 5, 5};
+        var ans = Arrays.stream(arr)
                 .boxed()
-                .collect(Collectors.groupingBy(e -> e, Collectors.counting()))
-                // Step 3: Find the element with the maximum count
+                .collect(Collectors.groupingBy(e->e,Collectors.counting()))
                 .entrySet()
                 .stream()
                 .max(Map.Entry.comparingByValue())
-                // Step 4: Retrieve the most repeated element
                 .map(Map.Entry::getKey)
-                .orElseThrow(() -> new IllegalArgumentException("Array is empty"));
+                .orElseThrow(()-> new IllegalArgumentException("Array is Empty"));
 
-        System.out.println("GGGGGGG "+mostRepeated);
+        System.out.println(ans);
+
+//        int mostRepeated = Arrays.stream(arr)
+//                // Step 2: Count the occurrences of each element
+//                .boxed()
+//                .collect(Collectors.groupingBy(e -> e, Collectors.counting()))
+//                // Step 3: Find the element with the maximum count
+//                .entrySet()
+//                .stream()
+//                .max(Map.Entry.comparingByValue())
+//                // Step 4: Retrieve the most repeated element
+//                .map(Map.Entry::getKey)
+//                .orElseThrow(() -> new IllegalArgumentException("Array is empty"));
+//
+//        System.out.println("GGGGGGG " + mostRepeated);
 
         List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 4, 4);
         Set<Integer> duplicated = numbers
                 .stream()
-                .filter(n -> Collections.frequency(numbers , n)>1)
+                .filter(n -> Collections.frequency(numbers, n) > 1)
                 .collect(Collectors.toSet());
         System.out.println(duplicated);
 
