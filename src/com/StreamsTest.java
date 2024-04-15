@@ -2,6 +2,7 @@ package com;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class StreamsTest {
     public static void main(String[] args) {
@@ -22,8 +23,14 @@ public class StreamsTest {
 
         // TODO print employee names belongs to dept "D2" - using streams functions
         //var x = employees.stream().filter(d -> d.getDeptno() != null && d.getDeptno().equals("D2")).toList();
-        var x = employees.stream().filter(dept -> dept.getDeptno() != null && dept.getDeptno().equals("D2")).toList();
-        System.out.println(x);
+        var employeeName = employees.stream()
+                .filter(e -> e.getDeptno() != null && e.getDeptno().equals("D2"))
+                .map(Employee::getName)
+                .collect(Collectors.toList());
+        System.out.println(employeeName);
+
+
+
 
         // TODO Print the sum of all employees salaries using streams - expected to
         // print 21000
@@ -39,17 +46,19 @@ public class StreamsTest {
         // TODO Should print most repeated number from the array, using streams or Java
         // 7 features...
         // number 5 repeated most of the (3)times, Should print 5 and not 3
-        int arr[] = {7, 5, 7, 5, 7, 5, 5};
+        int arr[] = {7, 5, 7, 7, 5, 5, 5};
+
         var ans = Arrays.stream(arr)
                 .boxed()
-                .collect(Collectors.groupingBy(e->e,Collectors.counting()))
+                .collect(Collectors.groupingBy(e -> e, Collectors.counting()))
                 .entrySet()
                 .stream()
                 .max(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey)
-                .orElseThrow(()-> new IllegalArgumentException("Array is Empty"));
+                .orElseThrow(() -> new IllegalArgumentException("Element Not found"));
 
-        System.out.println(ans);
+
+        System.out.println("%$$$$$$$$ " + ans);
 
 //        int mostRepeated = Arrays.stream(arr)
 //                // Step 2: Count the occurrences of each element
@@ -65,6 +74,7 @@ public class StreamsTest {
 //
 //        System.out.println("GGGGGGG " + mostRepeated);
 
+        //TODO frequency of element more than 1
         List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 4, 4);
         Set<Integer> duplicated = numbers
                 .stream()
@@ -78,11 +88,200 @@ public class StreamsTest {
         } else {
             processEmp(employees);
         }
+        // number 5 repeated most of the (3)times, Should print 5 and not 3
+
+        // TODO flatten a list and adding all the even values
+
+        List<List<Integer>> listNumbers = List.of(
+                Arrays.asList(1, 2),
+                Arrays.asList(3, 4),
+                Arrays.asList(5, 6)
+        );
+
+        System.out.println("FlattenList:::::::::");
+        var sum = listNumbers.stream().
+                flatMap(Collection::stream)
+                .filter(s -> s % 2 == 0)
+                .map(s -> s + 1)
+                .toList()
+                .stream().reduce(0, Integer::sum);
+        System.out.println(sum);
+
+        //TODO trying to update the value at particulat index <UnsupportedOperationException>
+        /**
+         *Arrays.asList() it wraps the original array with the List interface. Therefore, changes to the array reflect on the list too:
+         * List.of creates a copy of the provided array and does not allows null values.
+         */
+        List<String> words = Arrays.asList("hello", "world", "java");
+        words.set(0, "Anirban");
+        words.stream().map(String::toUpperCase).forEach(System.out::println);
+
+        //TODO filter the list starting with vowel
+        List<String> normalWords = Arrays.asList("apple", "banana", "cat", "egg", "orange");
+        System.out.println("filter the list starting with vowel::::::::::::::;");
+        normalWords.stream()
+                .filter(s -> "aeiou".indexOf(s.charAt(0)) >= 0)
+                .map(String::toUpperCase)
+                .toList()
+                .forEach(System.out::println);
+
+        //TODO BIFUNCTION   <U> U reduce(U identity,
+        //                 BiFunction<U, ? super T, U> accumulator,
+        //                 BinaryOperator<U> combiner);
+
+        List<User> users = Arrays.asList(new User("John", 30), new User("Julie", 35));
+        int computedAges =
+                users.stream()
+                        .reduce(0, (partialAgeResult, user) -> partialAgeResult + user.getAge(),
+                                Integer::sum);
+        /**
+         * without combiner
+         */
+
+        int age = users.stream()
+                .mapToInt(User::getAge)
+                .reduce(0, Integer::sum);
+        System.out.println(computedAges + "::::::" + age);
+
+        List<Integer> ages = Arrays.asList(25, 30, 45, 28, 32);
+        var result = ages.parallelStream()
+                .reduce(0, Integer::sum);
+        System.out.println(result);
+        /**
+         * To put it simply, if we use sequential streams and the types of the accumulator arguments
+         * and the types of its implementation match, we don’t need to use a combiner.
+         */
+        var result1 = ages.parallelStream()
+                .reduce(0, Integer::sum);
+        System.out.println("%%%%%%%% " + result1);
+
+        /**
+         * PARTITIONING BY IN COLLECTOR
+         */
+        List<Article> articles = Arrays.asList(
+                new Article("Baeldung", true),
+                new Article("Baeldung", false),
+                new Article("Programming Daily", false),
+                new Article("The Code", false));
+
+        //TODO e’ll divide it into two groups, one containing only Baeldung articles and the second one containing the rest:
+        var baeldungList = articles.stream()
+                .filter(s -> "Baeldung".equals(s.getName()))
+                .toList();
+        System.out.println(baeldungList);
+        var baeldungList1 = articles.stream()
+                .collect(Collectors.groupingBy(a -> a.name))
+                .entrySet()
+                .stream().filter(s -> s.getKey().equals("Baeldung"))
+                .toList();
+        System.out.println("baeldungList1:::::: " + baeldungList1);
+
+        List<Integer> integerList = Arrays.asList(1, 2, 3, 4, 5);
+        /**
+         * using for loop starting from end in reverse order..
+         */
+        List<Integer> res = new ArrayList<>();
+
+        for (int i = integerList.size() - 1; i >= 0; i--) {
+            res.add(integerList.get(i));
+        }
+        System.out.println(res);
+
+        /**
+         * using java 8 streams api
+         */
+        var res1 = IntStream.range(0, integerList.size())
+                .mapToObj(i -> integerList.get(integerList.size() - 1 - i))
+                .toList();
+        System.out.println(res1);
+
+        Map<String, String> idValueMap = new HashMap<>();
+        idValueMap.put("Account1", "4000");
+        idValueMap.put("Account2", "2000");
+        idValueMap.put("Account3", "7000");
+        idValueMap.put("Account4", "2000");
+
+        //TODO print the account having highest trasactions
+        var val = idValueMap.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElseThrow(() -> new IllegalArgumentException("No such element found!!"));
+        System.out.println(val);
+
+        //TODO print the second highest tramsaction
+        var val1 = idValueMap.entrySet().stream()
+                .sorted(Map.Entry.<String, String>comparingByValue(Comparator.reverseOrder()))
+                .skip(1)
+                .findFirst()
+                .map(Map.Entry::getKey)
+                .orElse("No such element found");
+
+        System.out.println("second highest tramsaction::: " + val1);
+
+        //TODO return a list in descending order
+        var lop = idValueMap.entrySet().stream()
+                .sorted(Map.Entry.<String, String>comparingByValue(Comparator.reverseOrder())
+                        .thenComparing(Map.Entry.<String, String>comparingByKey(Comparator.reverseOrder())))
+                .toList();
+        System.out.println(lop);
+
 
     }
 
     private void processEmp(List<Employee> employees) {
 
+    }
+
+    class Article {
+        String name;
+        boolean flag;
+
+        public Article(String name, boolean flag) {
+            this.name = name;
+            this.flag = flag;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public boolean isFlag() {
+            return flag;
+        }
+
+        @Override
+        public String toString() {
+            return "Article{" +
+                    "name='" + name + '\'' +
+                    ", flag=" + flag +
+                    '}';
+        }
+    }
+
+    class User {
+        String name;
+        int age;
+
+        public User(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
     }
 
     private class Employee {
@@ -98,6 +297,10 @@ public class StreamsTest {
             this.id = id;
             this.deptno = deptno;
             this.salary = salary;
+        }
+
+        public static void main(String[] args) {
+
         }
 
         @Override

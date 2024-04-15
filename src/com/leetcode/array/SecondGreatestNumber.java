@@ -22,6 +22,11 @@ public class SecondGreatestNumber {
 //        System.out.println(sLargest);
 
         int[] arr = {12, 5, 6, 13, 15, 9};
+        Arrays.stream(arr)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .skip(1)
+                .findFirst().orElse(-1);
 
         Arrays.stream(arr)
                 .boxed()

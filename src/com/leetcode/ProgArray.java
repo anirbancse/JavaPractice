@@ -18,11 +18,11 @@ public class ProgArray {
         lists.add(Arrays.asList(1,2,3));
         lists.add(Arrays.asList(1,2,3));
 
-//        lists.stream().flatMap(Collection::stream)
-//                .filter(f->f%2==0)
-//                .map(e->e*2)
-//                .collect(Collectors.toList())
-//                .forEach(System.out::println);
+        lists.stream().flatMap(Collection::stream)
+                .filter(f->f%2==0)
+                .map(e->e*2)
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
 
         int sum = lists.stream().flatMap(Collection::stream)
                 .mapToInt(Integer::intValue).sum();

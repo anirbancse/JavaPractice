@@ -11,7 +11,7 @@ public class ReturnSmallestPositiveInteger {
 
         Set<Integer> numberSet = new TreeSet<>();
         Arrays.stream(arr).filter(s -> s > 0).forEach(numberSet::add);
-        numberSet.forEach(System.out::println);
+       // numberSet.forEach(System.out::println);
         int sm = 1;
         while (numberSet.contains(sm)) {
             sm++;

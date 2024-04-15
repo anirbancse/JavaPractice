@@ -17,12 +17,16 @@ class AnaSolution {
         Arrays.sort(carr1);
         Arrays.sort(carr2);
 
-        String str1 = String.valueOf(carr1);
-        String str2 = String.valueOf(carr2);
-
-        if (str1.equals(str2)) {
+        if(Arrays.equals(carr1,carr2)){
             return true;
         }
+
+////        String str1 = String.valueOf(carr1);
+////        String str2 = String.valueOf(carr2);
+////
+////        if (str1.equals(str2)) {
+////            return true;
+//        }
         return false;
     }
 }

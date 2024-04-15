@@ -43,6 +43,8 @@ public class LongestSubstring {
         //System.out.println("The input String is " + s);
         int length = longestUniqueSubsttr(s);
         var str = findLongestUniqueSubstring(s);
+        System.out.println(length+" "+str);
+
 
         List<String> vowels = List.of("a", "e", "i", "o", "u");
 

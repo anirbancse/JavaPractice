@@ -25,8 +25,8 @@ public class DetailsImpl {
         lists.add(names);
         //System.out.println(lists);
 
-       lists.parallelStream().flatMap(Collection::stream)
-               .map(e->e.length())
+       lists.stream().flatMap(Collection::stream)
+               .map(String::length)
                .forEach(System.out::println);
 
     }
