@@ -10,10 +10,10 @@ class Dept implements Cloneable {
         this.dept_id = dept_id;
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
+//    @Override
+//    protected Object clone() throws CloneNotSupportedException {
+//        return super.clone();
+//    }
 
     @Override
     public String toString() {
@@ -37,12 +37,12 @@ class Student1 implements Cloneable {
         this.dept = dept;
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        Student1 stu = (Student1) super.clone();
-        stu.dept = (Dept) dept.clone();
-        return stu;
-    }
+//    @Override
+//    protected Object clone() throws CloneNotSupportedException {
+//        Student1 stu = (Student1) super.clone();
+//        stu.dept = (Dept) dept.clone();
+//        return stu;
+//    }
 
     @Override
     public String toString() {
@@ -61,16 +61,12 @@ public class ShallowCopy {
         Student1 student1 = new Student1(1, "John", dept);
         Student1 student2 = null;
 
-        try {
-            student2 = (Student1) student1.clone(); //shallowcopy means both the objects will refer to the same memory ref
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+
         student2 = student1;
 
 
         student2.dept.dept_name = "CSE";
-        System.out.println(student1.hashCode() + "--------" + student2.hashCode());
+        System.out.println(student1 + "--------" + student2.hashCode());
 
 
     }
