@@ -10,6 +10,10 @@ public class SingletonClass {
         return "In Singleton";
     }
 
+    public void setMsg(String s){
+        this.s = s;
+    }
+
     private SingletonClass(){
         s= "Hello";
     }
@@ -21,10 +25,18 @@ public class SingletonClass {
         return singleton;
     }
 
+    @Override
+    public String toString() {
+        return "SingletonClass{" +
+                "s='" + s + '\'' +
+                '}';
+    }
+
     public static void main(String[] args) {
         SingletonClass s = SingletonClass.getSingleton();
+        s.setMsg("World!!");
         SingletonClass p = SingletonClass.getSingleton();
 
-        System.out.println(s.hashCode()+ ", "+p.hashCode());
+        System.out.println(s + ", "+p);
     }
 }

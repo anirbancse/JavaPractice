@@ -44,6 +44,7 @@ public class StreamsTest {
     var max2ndSalary =
         employees.stream()
             .sorted(Comparator.comparing(Employee::getSalary).reversed())
+//                .sorted(Map.Entry.<String, String>comparingByValue(Comparator.reverseOrder()))  // for  map
             .skip(1)
             .findFirst()
             .map(Employee::getName)

@@ -1,8 +1,5 @@
 package com.threads;
 
-import java.io.*;
-import java.util.*;
-
 // A Class used to send a message
 class Sender {
   public void send(String msg) {
@@ -18,8 +15,8 @@ class Sender {
 
 // Class for send a message using Threads
 class ThreadedSend extends Thread {
-  private String msg;
   Sender sender;
+  private String msg;
 
   // Receives a message object and a string
   // message to be sent
@@ -31,10 +28,9 @@ class ThreadedSend extends Thread {
   public void run() {
     // Only one thread can send a message
     // at a time.
-    synchronized (sender) {
-      // synchronizing the snd object
-      sender.send(msg);
-    }
+
+    // synchronizing the snd object
+    sender.send(msg);
   }
 }
 
@@ -46,13 +42,14 @@ public class JoinThread {
     ThreadedSend S2 = new ThreadedSend(" Bye ", snd);
 
     // Start two threads of ThreadedSend type
-    S1.start();
-    S2.start();
+
+    // S2.start();
 
     // wait for threads to end
     try {
+      S1.start();
       S1.join();
-      S2.join();
+      S2.start();
     } catch (Exception e) {
       System.out.println("Interrupted");
     }

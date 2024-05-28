@@ -43,12 +43,12 @@ class Alien implements Cloneable{
     }
 }
 
-final public class ImmutableCustom  {
+final public class ImmutableCustom implements Cloneable {
 
     private final String name;
     private final int id;
     private final List<String> list;
-    private final Alien alien;
+    private  Alien alien;
 
     public ImmutableCustom(String name, int id, List<String> list, Alien alien) {
         this.name = name;
@@ -65,17 +65,17 @@ final public class ImmutableCustom  {
         return id;
     }
 
-//    public Alien getAlien() throws CloneNotSupportedException {
-//
-//        ImmutableCustom immutableCustom = (ImmutableCustom) super.clone();
-//        immutableCustom.alien = (Alien) alien.clone();
-//
-//      return immutableCustom.alien;
-//    }
+    public Object clone() throws CloneNotSupportedException {
 
+        ImmutableCustom immutableCustom = (ImmutableCustom) super.clone();
+        immutableCustom.alien = (Alien) alien.clone();
 
-    public Alien getAlien() {
-        return new Alien(alien.getName(),alien.getLoc());
+      return immutableCustom;
+    }
+
+//
+    public Alien getAlien() throws CloneNotSupportedException {
+        return (Alien) alien.clone();
     }
 
     public List<String> getList() {
@@ -99,13 +99,21 @@ final public class ImmutableCustom  {
     public static void main(String[] args) throws CloneNotSupportedException {
         Alien alien = new Alien("Dev","Pune");
         ImmutableCustom immutableCustom = new ImmutableCustom("Ani",2,List.of("A","B","C"),alien);
+        ImmutableCustom immutableCustom2 = null;
 
+        try{
+            immutableCustom2 = (ImmutableCustom) immutableCustom.clone();
+        }catch (CloneNotSupportedException c){
+            c.printStackTrace();
+        }
 
         //System.out.println(immutableCustom.toString());
 
         immutableCustom.getList().add("D");
-        immutableCustom.getAlien().setLoc("Kolkata");
-        System.out.println(immutableCustom.getAlien().hashCode()+"  "+immutableCustom.getAlien().hashCode());
+        immutableCustom2.alien.setLoc("Kolkata");
+        System.out.println(immutableCustom);
+        System.out.println(immutableCustom2);
+        //System.out.println(immutableCustom.getAlien().hashCode()+"  "+immutableCustom.getAlien().hashCode());
 
     }
 }
