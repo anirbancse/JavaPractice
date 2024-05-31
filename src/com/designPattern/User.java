@@ -79,7 +79,7 @@ public class User {
             //Return the finally consrcuted User object
             public User build() {
                 User user =  new User(this);
-                validateUserObject(user);
+              //  validateUserObject(user);
                 return user;
             }
             private void validateUserObject(User user) {

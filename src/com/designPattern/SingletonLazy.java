@@ -2,14 +2,15 @@ package com.designPattern;
 
 public class SingletonLazy {
 
-    private static SingletonLazy singletonLazy;
+  private static volatile SingletonLazy singletonLazy;
 
-    private SingletonLazy (){}
+  private SingletonLazy() {}
 
-    public static SingletonLazy getInstance(){
-        if(singletonLazy==null)
-            return singletonLazy = new SingletonLazy();
-        else
-            return singletonLazy;
+  public static SingletonLazy getInstance() {
+    if (singletonLazy == null) {
+      return singletonLazy = new SingletonLazy();
+    } else {
+      return singletonLazy;
     }
+  }
 }

@@ -2,41 +2,41 @@ package com.designPattern;
 
 public class SingletonClass {
 
-    private static SingletonClass singleton = null;
+  private static SingletonClass singleton = null;
 
-    String s;
+  String s;
 
-    public String getMsg(){
-        return "In Singleton";
-    }
+  private SingletonClass() {
+    s = "Hello";
+  }
 
-    public void setMsg(String s){
-        this.s = s;
-    }
+  public static synchronized SingletonClass getSingleton() {
+    //    synchronized (Singleton.class) {
+    //
+    //    }
+    if (singleton == null) singleton = new SingletonClass();
 
-    private SingletonClass(){
-        s= "Hello";
-    }
+    return singleton;
+  }
 
-    public static SingletonClass getSingleton(){
-        if(singleton==null)
-            singleton = new SingletonClass();
+  public static void main(String[] args) {
+    SingletonClass s = SingletonClass.getSingleton();
+    s.setMsg("World!!");
+    SingletonClass p = SingletonClass.getSingleton();
 
-        return singleton;
-    }
+    System.out.println(s.hashCode() + ", " + p.hashCode());
+  }
 
-    @Override
-    public String toString() {
-        return "SingletonClass{" +
-                "s='" + s + '\'' +
-                '}';
-    }
+  public String getMsg() {
+    return "In Singleton";
+  }
 
-    public static void main(String[] args) {
-        SingletonClass s = SingletonClass.getSingleton();
-        s.setMsg("World!!");
-        SingletonClass p = SingletonClass.getSingleton();
+  public void setMsg(String s) {
+    this.s = s;
+  }
 
-        System.out.println(s + ", "+p);
-    }
+  @Override
+  public String toString() {
+    return "SingletonClass{" + "s='" + s + '\'' + '}';
+  }
 }

@@ -6,6 +6,20 @@ import java.util.List;
 public class LongestSubstring {
 
   public static String findLongestUniqueSubstring(String input) {
+
+    input
+        .chars()
+        .mapToObj(c -> (char) c)
+        .collect(
+            StringBuilder::new,
+            (sb, c) -> {
+              if (sb.indexOf(String.valueOf(c)) == -1) {
+                sb.append(c);
+              }
+            },
+            StringBuilder::append)
+        .toString();
+
     return input
         .chars()
         .mapToObj(c -> (char) c)
@@ -49,9 +63,9 @@ public class LongestSubstring {
     List<String> vowels = List.of("a", "e", "i", "o", "u");
 
     // sequential stream - nothing to combine
-    StringBuilder result =
+    var result =
         vowels.stream()
-            .collect(StringBuilder::new, (x, y) -> x.append(y), (a, b) -> a.append(",").append(b));
+            .collect(StringBuilder::new, StringBuilder::append, (a, b) -> a.append(",").append(b));
     System.out.println(result.toString());
     //        System.out.println(str);
     //        System.out.println("The length of the longest non-repeating character substring is " +

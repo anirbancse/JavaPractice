@@ -44,7 +44,8 @@ public class StreamsTest {
     var max2ndSalary =
         employees.stream()
             .sorted(Comparator.comparing(Employee::getSalary).reversed())
-//                .sorted(Map.Entry.<String, String>comparingByValue(Comparator.reverseOrder()))  // for  map
+            //                .sorted(Map.Entry.<String,
+            // String>comparingByValue(Comparator.reverseOrder()))  // for  map
             .skip(1)
             .findFirst()
             .map(Employee::getName)
@@ -137,7 +138,7 @@ public class StreamsTest {
 
     // TODO trying to update the value at particulat index <UnsupportedOperationException>
     /**
-     * Arrays.asList() it wraps the original array with the List interface. Therefore, changes to
+     * Arrays.asList() it wraps the original array(and therefore it size cannot be altered) with the List interface. Therefore, changes to
      * the array reflect on the list too: List.of creates a copy of the provided array and does not
      * allows null values.
      */

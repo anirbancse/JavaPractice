@@ -16,9 +16,10 @@ public class ConcurrentModification {
         var nameList = map.entrySet()
                 .stream()
                 .map(Map.Entry::getValue)
+                .sorted()
                 .collect(Collectors.toList());
 
-        Collections.sort(nameList);
+       // Collections.sort(nameList);
         System.out.println(nameList);
 
         var res = lists.stream().filter(num -> num % 2 == 0).reduce(Integer::sum);
@@ -29,6 +30,13 @@ public class ConcurrentModification {
 
         int maxc = lists.stream().max((o1, o2) -> o1 - o2).orElseThrow(NoSuchElementException::new);
         System.out.println(maxc);
+
+        var slargest = lists.stream()
+                .sorted(Collections.reverseOrder())
+                .skip(1)
+                .findFirst()
+                .orElse(0);
+    System.out.println(slargest);
 
         List<Integer> finalList = lists.stream()
                 .filter(s -> s != 2)
