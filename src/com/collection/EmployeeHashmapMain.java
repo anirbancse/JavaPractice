@@ -31,6 +31,9 @@ public class EmployeeHashmapMain {
     hashMap.put(employeeHashMap1, "CSE");
     hashMap.put(employeeHashMap2, "IT");
 
+    System.out.println(employeeHashMap1.hashCode());
+    System.out.println(employeeHashMap2.hashCode());
+
     hashMap.entrySet().forEach(e -> System.out.println(e.getValue()));
 
     // System.out.println(hashMap.get(employeeHashMap2));

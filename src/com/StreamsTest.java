@@ -20,6 +20,12 @@ public class StreamsTest {
 
     // System.out.println(employees);
 
+    // TODO return the map based on the name
+
+    var map = employees.stream().max(Comparator.comparing(Employee::getSalary)).stream().toList();
+    // .collect(Collectors.groupingBy(s->s.id));
+    System.out.println(map);
+
     // TODO print employee names belongs to dept "D2" - using streams functions
 
     var employeeD2 =
@@ -138,9 +144,9 @@ public class StreamsTest {
 
     // TODO trying to update the value at particulat index <UnsupportedOperationException>
     /**
-     * Arrays.asList() it wraps the original array(and therefore it size cannot be altered) with the List interface. Therefore, changes to
-     * the array reflect on the list too: List.of creates a copy of the provided array and does not
-     * allows null values.
+     * Arrays.asList() it wraps the original array(and therefore it size cannot be altered) with the
+     * List interface. Therefore, changes to the array reflect on the list too: List.of creates a
+     * copy of the provided array and does not allows null values.
      */
     List<String> words = Arrays.asList("hello", "world", "java");
     words.set(0, "Anirban");
