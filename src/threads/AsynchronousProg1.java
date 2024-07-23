@@ -13,8 +13,8 @@ public class AsynchronousProg1 {
    * smaller independent subtasks until they are simple enough to run asynchronously.
    *
    * <p>After that, the “join” part begins. The results of all subtasks are recursively joined into
-   * a single result. In the case of a task that returns void, the program simply waits until every
-   * subtask runs.
+   * a single result. In the case of a task that void, the program simply waits until every subtask
+   * runs.returns
    *
    * <p>The ForkJoinPool is the heart of the framework. It is an implementation of the
    * ExecutorService that manages worker threads and provides us with tools to get information about
@@ -33,6 +33,8 @@ public class AsynchronousProg1 {
         CompletableFuture.supplyAsync(() -> "Hello")
             .thenApply(s -> s + " World")
             .thenApply(String::toUpperCase);
+
+
 
     future.thenAccept(System.out::println);
 
@@ -53,6 +55,7 @@ class CompletableFutureExceptionExample {
               return 100;
             });
 
+
     future.exceptionally(
         ex -> {
           System.out.println("Exception occurred: " + ex.getMessage());
@@ -70,11 +73,10 @@ class CompletableFutureCombineExample {
     CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(() -> 10);
     CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> 20);
 
-    CompletableFuture<Integer> combinedFuture =
-        future1.thenCombine(future2, (result1, result2) -> result1 + result2);
+    CompletableFuture<Integer> combinedFuture = future1.thenCombine(future2, Integer::sum);
 
     combinedFuture.thenAccept(System.out::println);
 
-    combinedFuture.join(); // make sure Main Thread waits for the future object
+    // combinedFuture.join(); // make sure Main Thread waits for the future object
   }
 }

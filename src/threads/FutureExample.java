@@ -1,6 +1,9 @@
 package threads;
 
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class FutureExample {
   public static void main(String[] args) {
@@ -11,8 +14,12 @@ public class FutureExample {
           Thread.sleep(2000); // Simulate a time-consuming task
           return "Result of the asynchronous computation";
         };
+    Callable<Integer> task2 =
+        () -> {
+          return 1;
+        };
 
-    Future<String> future = executor.submit(task);
+    var future = executor.submit(task);
 
     System.out.println("Task submitted, waiting for result...");
 

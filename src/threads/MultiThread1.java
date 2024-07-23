@@ -16,7 +16,7 @@ class Multithread {
      * the same lock, ensuring that only one thread can execute the synchronized block across all
      * instances of the class.
      */
-    synchronized (Multithread.class) {
+    synchronized (this) {
       for (int i = 0; i < 3; i++) {
         try {
           System.out.println(count++);
@@ -53,7 +53,8 @@ class SynchronizedExample {
      * <p>- Here we can see only one instance of the class is created and been shared across two different threads
      * here it's a private lock
      */
-    synchronized (this) {
+    synchronized (SynchronizedExample.class) {
+      System.out.println(Thread.currentThread().getName());
       count++;
     }
   }
@@ -70,7 +71,7 @@ class Main {
     Thread thread1 =
         new Thread(
             () -> {
-              for (int i = 0; i < 1000; i++) {
+              for (int i = 0; i < 50; i++) {
                 example.increment();
               }
             });
@@ -78,7 +79,7 @@ class Main {
     Thread thread2 =
         new Thread(
             () -> {
-              for (int i = 0; i < 1000; i++) {
+              for (int i = 0; i < 10; i++) {
                 example.increment();
               }
             });
