@@ -97,6 +97,6 @@ public class DeepCopy {
 
     // This change will not be reflected in original student 'student1'
 
-    System.out.println(student1 + "-----------" + student2); // Output : Biology
+    System.out.println(student1 + "-----------\n" + student2); // Output : Biology
   }
 }

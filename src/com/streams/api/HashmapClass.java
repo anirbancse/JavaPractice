@@ -1,5 +1,6 @@
 package com.streams.api;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,7 +15,6 @@ public class HashmapClass {
 
     Map sortByValue1 =
         map.entrySet().stream()
-            .sorted((o1, o2) -> o1.getValue().compareTo(o2.getValue()))
             .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
 
     Map sortByValue =

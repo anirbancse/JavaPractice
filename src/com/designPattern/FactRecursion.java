@@ -8,6 +8,7 @@ public class FactRecursion {
   }
 
   public static void main(String[] args) {
+
     System.out.println(FactRecursion.fact(100));
   }
 }

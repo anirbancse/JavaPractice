@@ -1,42 +1,39 @@
 package com.designPattern;
 
-public class SingletonClass {
-
-  private static SingletonClass singleton = null;
+class SingletonClass1 {
+  private static SingletonClass1 singleton = null;
 
   String s;
 
-  private SingletonClass() {
+  private SingletonClass1() {
     s = "Hello";
   }
 
-  public static synchronized SingletonClass getSingleton() {
-    //    synchronized (Singleton.class) {
+  public static synchronized SingletonClass1 getSingleton() {
+    //    synchronized (SingletonClass1.class) {
     //
     //    }
-    if (singleton == null) singleton = new SingletonClass();
-
+    if (singleton == null) singleton = new SingletonClass1();
     return singleton;
   }
 
-  public static void main(String[] args) {
-    SingletonClass s = SingletonClass.getSingleton();
-    s.setMsg("World!!");
-    SingletonClass p = SingletonClass.getSingleton();
-
-    System.out.println(s.hashCode() + ", " + p.hashCode());
+  public String getS() {
+    return s;
   }
 
-  public String getMsg() {
-    return "In Singleton";
-  }
-
-  public void setMsg(String s) {
+  public void setS(String s) {
     this.s = s;
   }
+}
 
-  @Override
-  public String toString() {
-    return "SingletonClass{" + "s='" + s + '\'' + '}';
+public class SingletonClass {
+
+  public static void main(String[] args) {
+
+    SingletonClass1 s = SingletonClass1.getSingleton();
+    s.setS("World!!");
+    SingletonClass1 p = SingletonClass1.getSingleton();
+
+    System.out.println(s.hashCode() + ", " + p.hashCode());
   }
 }

@@ -21,21 +21,21 @@ public class User {
         }
 
         //All getter, and NO setter to provde immutability
-        public String getFirstName() {
-            return firstName;
-        }
-        public String getLastName() {
-            return lastName;
-        }
-        public int getAge() {
-            return age;
-        }
-        public String getPhone() {
-            return phone;
-        }
-        public String getAddress() {
-            return address;
-        }
+//        public String getFirstName() {
+//            return firstName;
+//        }
+//        public String getLastName() {
+//            return lastName;
+//        }
+//        public int getAge() {
+//            return age;
+//        }
+//        public String getPhone() {
+//            return phone;
+//        }
+//        public String getAddress() {
+//            return address;
+//        }
 
         public static UserBuilder builder(){
             return  new UserBuilder();
@@ -53,6 +53,8 @@ public class User {
             private int age;
             private String phone;
             private String address;
+
+
 
 
             public UserBuilder firstName(String firstName){

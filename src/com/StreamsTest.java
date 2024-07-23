@@ -18,6 +18,8 @@ public class StreamsTest {
     employees.add(new Employee("EEE", 555, "D2", 5000));
     employees.add(new Employee("FFF", 666, "D2", 6000));
 
+    List<List<String>> listList = new ArrayList<>();
+
     // System.out.println(employees);
 
     // TODO return the map based on the name

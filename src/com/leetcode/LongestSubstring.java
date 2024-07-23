@@ -7,26 +7,13 @@ public class LongestSubstring {
 
   public static String findLongestUniqueSubstring(String input) {
 
-    input
-        .chars()
-        .mapToObj(c -> (char) c)
-        .collect(
-            StringBuilder::new,
-            (sb, c) -> {
-              if (sb.indexOf(String.valueOf(c)) == -1) {
-                sb.append(c);
-              }
-            },
-            StringBuilder::append)
-        .toString();
-
     return input
         .chars()
         .mapToObj(c -> (char) c)
         .collect(
             StringBuilder::new,
             (sb, c) -> {
-              if (sb.indexOf(String.valueOf(c)) == -1) {
+              if (sb.indexOf(String.valueOf(c)) == -1) { // uniqueness
                 sb.append(c);
               }
             },

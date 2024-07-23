@@ -1,6 +1,8 @@
 package com.designPattern;
 
 
+import netscape.javascript.JSObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,7 +104,7 @@ final public class ImmutableCustom implements Cloneable {
         ImmutableCustom immutableCustom2 = null;
 
         try{
-            immutableCustom2 = (ImmutableCustom) immutableCustom.clone();
+            immutableCustom2 = (ImmutableCustom) immutableCustom.clone(); //deepcopy
         }catch (CloneNotSupportedException c){
             c.printStackTrace();
         }
@@ -113,7 +115,7 @@ final public class ImmutableCustom implements Cloneable {
         immutableCustom2.alien.setLoc("Kolkata");
         System.out.println(immutableCustom);
         System.out.println(immutableCustom2);
-        //System.out.println(immutableCustom.getAlien().hashCode()+"  "+immutableCustom.getAlien().hashCode());
+        System.out.println(immutableCustom.getAlien().hashCode()+"  "+immutableCustom.getAlien().hashCode());
 
     }
 }
