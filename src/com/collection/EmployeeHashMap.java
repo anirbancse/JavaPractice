@@ -44,19 +44,19 @@ public class EmployeeHashMap {
   //        return Objects.hash(id, name, address);
   //    }
 
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     EmployeeHashMap that = (EmployeeHashMap) o;
-    return id == that.id && Objects.equals(name, that.name);
+    return id == that.id
+        && Objects.equals(name, that.name)
+        && Objects.equals(address, that.address);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(id, name,address);
   }
 
   @Override
@@ -69,6 +69,7 @@ public class EmployeeHashMap {
         + '\''
         + ", address='"
         + address
-        + '\''        + '}';
+        + '\''
+        + '}';
   }
 }

@@ -7,7 +7,7 @@ public class EmployeeHashmapMain {
 
   public static void main(String[] args) {
     EmployeeHashMap employeeHashMap1 = new EmployeeHashMap(1, "Anirban", "Birati");
-    EmployeeHashMap employeeHashMap2 = new EmployeeHashMap(1, "Anirban", "Kolkata");
+    EmployeeHashMap employeeHashMap2 = new EmployeeHashMap(1, "Anirban", "Birati");
 
     Map<EmployeeHashMap, String> hashMap = new HashMap<>();
     // normalHashmap.put(null,344);
@@ -34,7 +34,7 @@ public class EmployeeHashmapMain {
     System.out.println(employeeHashMap1.hashCode());
     System.out.println(employeeHashMap2.hashCode());
 
-    hashMap.entrySet().forEach(e -> System.out.println(e.getValue()));
+    hashMap.entrySet().forEach(e -> System.out.println(e.getKey()));
 
     // System.out.println(hashMap.get(employeeHashMap2));
   }

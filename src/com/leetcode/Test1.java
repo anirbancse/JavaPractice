@@ -2,6 +2,7 @@ package com.leetcode;
 
 import com.sun.source.doctree.SeeTree;
 
+import java.sql.Array;
 import java.util.*;
 
 public class Test1 {
@@ -11,6 +12,8 @@ public class Test1 {
         char ch[] = s.toCharArray();
         Set<Character> set = new HashSet<>();
         Set<Integer> set2 = new HashSet<>();
+
+
 
         List<Integer> list = Arrays.asList(67,1,5);
 

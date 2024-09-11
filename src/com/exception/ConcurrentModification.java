@@ -28,7 +28,7 @@ public class ConcurrentModification {
         else
             System.out.println("*********** " + res.get());
 
-        int maxc = lists.stream().max((o1, o2) -> o1 - o2).orElseThrow(NoSuchElementException::new);
+        int maxc = lists.stream().max(Comparator.comparingInt(o -> o)).orElseThrow(NoSuchElementException::new);
         System.out.println(maxc);
 
         var slargest = lists.stream()

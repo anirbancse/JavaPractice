@@ -112,10 +112,11 @@ final public class ImmutableCustom implements Cloneable {
         //System.out.println(immutableCustom.toString());
 
         immutableCustom.getList().add("D");
+        immutableCustom2.getList().add("D");
         immutableCustom2.alien.setLoc("Kolkata");
         System.out.println(immutableCustom);
         System.out.println(immutableCustom2);
-        System.out.println(immutableCustom.getAlien().hashCode()+"  "+immutableCustom.getAlien().hashCode());
+        //System.out.println(immutableCustom+"  "+immutableCustom2);
 
     }
 }

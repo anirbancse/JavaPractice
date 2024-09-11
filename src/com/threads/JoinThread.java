@@ -14,7 +14,7 @@ class Sender {
 }
 
 // Class for send a message using Threads
-class ThreadedSend extends Thread {
+class ThreadedSend implements Runnable {
   Sender sender;
   private String msg;
 
@@ -30,6 +30,7 @@ class ThreadedSend extends Thread {
     // at a time.
 
     // synchronizing the snd object
+    System.out.println(Thread.currentThread().getName());
     sender.send(msg);
   }
 }
@@ -41,15 +42,18 @@ public class JoinThread {
     ThreadedSend S1 = new ThreadedSend(" Hi ", snd);
     ThreadedSend S2 = new ThreadedSend(" Bye ", snd);
 
+    Thread t1 = new Thread(S1);
+    Thread t2 = new Thread(S2);
+
     // Start two threads of ThreadedSend type
 
     // S2.start();
 
     // wait for threads to end
     try {
-      S1.start();
-      S1.join();
-      S2.start();
+      t1.start();
+      t1.join();
+      t2.start();
     } catch (Exception e) {
       System.out.println("Interrupted");
     }

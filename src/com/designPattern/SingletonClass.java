@@ -24,6 +24,13 @@ class SingletonClass1 {
   public void setS(String s) {
     this.s = s;
   }
+
+  @Override
+  public String toString() {
+    return "SingletonClass1{" +
+            "s='" + s + '\'' +
+            '}';
+  }
 }
 
 public class SingletonClass {
@@ -34,6 +41,6 @@ public class SingletonClass {
     s.setS("World!!");
     SingletonClass1 p = SingletonClass1.getSingleton();
 
-    System.out.println(s.hashCode() + ", " + p.hashCode());
+    System.out.println(s + ", " + p);
   }
 }

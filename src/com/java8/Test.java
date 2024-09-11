@@ -1,27 +1,56 @@
 package com.java8;
 
-import java.util.*;
+@FunctionalInterface
+interface Demo {
+
+  String getName(String name);
+
+  default String getCity(String city) {
+    return city;
+  }
+
+  default int getAge(int age) {
+    return age;
+  }
+}
+
+class KL {
+
+  /**
+   * The constructor of B is called, which in turn calls the constructor of KL implicitly (since
+   * every constructor in Java implicitly calls the constructor of its superclass).
+   */
+  public KL() {
+    System.out.println("In constructor A");
+  }
+
+  void show() {
+    System.out.println("In method A");
+  }
+}
+
+class B extends KL {
+
+  public B() {
+    // super();
+    System.out.println("In Constructor B");
+  }
+
+  @Override
+  void show() {
+    super.show();
+    System.out.println("In method B");
+  }
+}
 
 public class Test {
 
-    public static void main(String[] args) {
-        List<String> countryList = List.of("INDIA", "AUSTRALIA", "ENGLAND", "NEWZEALAND", "SCOTLAND");
+  public static void main(String[] args) {
+    B b = new B();
+    Demo d = name -> "Hello " + name;
 
-        List<String> countryList1 = Arrays.asList("INDIA", "AUSTRALIA", "ENGLAND", "NEWZEALAND", "SCOTLAND");
-
-      //  countryList.stream().filter(s->s.endsWith("A")).forEach(e-> System.out.println(e));
-
-        countryList1.sort((o1, o2) -> o1.compareTo(o2));
-        System.out.println(countryList1);
-
-
-        List<Integer> lists = Arrays.asList(1,2,3,5,4,6,7,8,9);
-
-       int min =  lists.stream().min(((o1, o2) -> o1-o2)).orElseThrow(NoSuchElementException::new);
-       int max = lists.stream()
-               .max((o1, o2) -> o1-o2)
-               .orElseThrow(NoSuchElementException::new);
-
-        System.out.println(max+"-"+min);
-    }
+    System.out.println(d.getName("Anir"));
+    System.out.println(d.getAge(30));
+    System.out.println(d.getCity("Kolkata"));
+  }
 }

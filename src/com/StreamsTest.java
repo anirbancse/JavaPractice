@@ -26,6 +26,7 @@ public class StreamsTest {
 
     var map = employees.stream().max(Comparator.comparing(Employee::getSalary)).stream().toList();
     // .collect(Collectors.groupingBy(s->s.id));
+
     System.out.println(map);
 
     // TODO print employee names belongs to dept "D2" - using streams functions
@@ -176,6 +177,7 @@ public class StreamsTest {
     System.out.println(computedAges + "::::::" + age);
 
     List<Integer> ages = Arrays.asList(25, 30, 45, 28, 32);
+
     var result = ages.parallelStream().reduce(0, Integer::sum);
     System.out.println(result);
     /**
@@ -198,9 +200,9 @@ public class StreamsTest {
     var baeldungList = articles.stream().filter(s -> "Baeldung".equals(s.getName())).toList();
     System.out.println(baeldungList);
     var baeldungList1 =
-        //        articles.stream().collect(Collectors.groupingBy(a -> a.name)).entrySet().stream()
-        //            .filter(s -> s.getKey().equals("Baeldung"))
-        //            .toList();
+                articles.stream().collect(Collectors.groupingBy(a -> a.name)).entrySet().stream()
+                    .filter(s -> s.getKey().equals("Baeldung"))
+                    .toList();
 
         articles.stream()
             .collect(Collectors.groupingBy(a -> a.name, Collectors.toList()))
@@ -234,9 +236,8 @@ public class StreamsTest {
 
     var val =
         idValueMap.entrySet().stream()
-            .max(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+            .max(Map.Entry.comparingByValue())
             .map(Map.Entry::getKey)
-            // .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("No such element found!!"));
     System.out.println(val);
 
@@ -248,6 +249,8 @@ public class StreamsTest {
             .skip(1)
             .findFirst()
             .orElse("No such element found");
+
+    System.out.println(val1);
 
     // TODO return a list in descending order
     var lop =

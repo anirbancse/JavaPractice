@@ -15,7 +15,7 @@ public class ThreadProg1 {
             System.out.println(Thread.currentThread().getName());
         });
 
-        System.out.println(Thread.currentThread().getName());
+        System.out.println("sads "+Thread.currentThread().getName());
         thread.start();
 
     }
